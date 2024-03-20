@@ -1,13 +1,19 @@
 using eHealthToDoListTask.Infrastructure.Context;
+using eHealthToDoListTask.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddControllers();
+
+builder.Services.AddScoped<IToDoItemRepo, ToDoItemRepo>();
+
 builder.Services.AddDbContext<ToDoDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ToDoListDbConnectionString")));
-builder.Services.AddControllers();
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

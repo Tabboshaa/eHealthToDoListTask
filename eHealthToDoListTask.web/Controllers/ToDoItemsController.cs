@@ -17,14 +17,14 @@ namespace eHealthToDoListTask.web.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Task>>> GetAllTasks()
+        public async Task<ActionResult<IEnumerable<Task>>> GetAllToDoItems()
         {
             var toDoItems = await _toDoItemRepository.GetAllToDoItemsAsync();
             return Ok(toDoItems);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ToDoItem>> GetTaskById(int id)
+        public async Task<ActionResult<ToDoItem>> GetToDoItemById(int id)
         {
             var toDoItem = await _toDoItemRepository.GetToDoItemByIdAsync(id);
             if (toDoItem == null)
@@ -35,13 +35,13 @@ namespace eHealthToDoListTask.web.Controllers
             return Ok(toDoItem);
         }
         [HttpPost]
-        public async Task<ActionResult<Task>> CreateTask(ToDoItem toDoItem)
+        public async Task<ActionResult<Task>> CreateToDoItem(ToDoItem toDoItem)
         {
             await _toDoItemRepository.CreateToDoItemAsync(toDoItem);
-            return CreatedAtAction(nameof(GetTaskById), new { id = toDoItem.Id }, toDoItem);
+            return CreatedAtAction(nameof(GetToDoItemById), new { id = toDoItem.Id }, toDoItem);
         }
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTask(int id, ToDoItem toDoItem)
+        public async Task<IActionResult> UpdateToDoItem(int id, ToDoItem toDoItem)
         {
             try
             {

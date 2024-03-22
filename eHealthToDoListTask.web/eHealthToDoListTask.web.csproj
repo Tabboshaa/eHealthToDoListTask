@@ -20,8 +20,4 @@
     <ProjectReference Include="..\eHealthToDoListTask.Infrastructure\eHealthToDoListTask.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>

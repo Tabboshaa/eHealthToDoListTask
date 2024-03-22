@@ -38,7 +38,7 @@ namespace eHealthToDoListTask.Infrastructure.Repositories
             var existingTodoItem = await GetToDoItemByIdAsync(id);
             if (existingTodoItem == null)
             {
-                throw new Exception($"ToDoItem with ID {id} not found.");
+                throw new InvalidOperationException($"ToDoItem with ID {id} not found.");
             }
 
             existingTodoItem.Title = updatedToDoItem.Title;
@@ -55,7 +55,7 @@ namespace eHealthToDoListTask.Infrastructure.Repositories
             var existingTodoItem = await GetToDoItemByIdAsync(id);
             if (existingTodoItem == null)
             {
-                throw new Exception($"ToDoItem with ID {id} not found.");
+                throw new InvalidOperationException($"ToDoItem with ID {id} not found.");
             }
 
             _dbContext.ToDoItems.Remove(existingTodoItem);
